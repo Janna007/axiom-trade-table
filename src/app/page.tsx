@@ -7,9 +7,19 @@ import axiomlogo from '../../public/axiomlogo.svg'
 import axiom from '../../public/axiom.svg'
 import search from '../../public/search.svg'
 import PrimaryButton from '@/components/atoms/button';
+import { TableHeader } from '@/components/molecules/TableHeader';
+import { TokenTable } from '@/components/orgnanisms/TokenTable';
+import { useRealtimeData } from '@/hooks/useRealtimeData';
+import { useFiltering } from '@/hooks/useFiltering';
+import { useSorting } from '@/hooks/useSorting';
 
 
 export default function Home() {
+
+  // const { data, loading, error, priceUpdates, refetch } = useRealtimeData({ updateInterval: 2500 });
+  // const { filteredData, filterConfig, setTab, setTimeFilter, setSearch } = useFiltering(data);
+  // const { sortedData, sortConfig, handleSort } = useSorting(filteredData);
+
    return (
     <div className='bg-background min-h-screen text-foreground '>
 
@@ -29,28 +39,28 @@ export default function Home() {
             
             {/* Main Navigation */}
             <nav className="hidden lg:flex items-center gap-1">
-              <Button variant="ghost" size="sm" className="text-primary font-normal">
+              <Button variant="ghost" size="sm" className="text-primary font-normal hover:bg-primary/30 ">
                 Discover
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium  hover:bg-primary/30  hover:text-primary">
                 Pulse
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:bg-primary/30   hover:text-primary">
                 Trackers
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:bg-primary/30  hover:text-primary">
                 Perpetuals
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:bg-primary/30  hover:text-primary">
                 Yield
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:bg-primary/30  hover:text-primary">
                 Vision
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:bg-primary/30  hover:text-primary">
                 Portfolio
               </Button>
-              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:text-primary">
+              <Button variant="ghost" size="sm" className="text-foreground font-medium hover:bg-primary/30  hover:text-primary">
                 Rewards
               </Button>
             </nav>
@@ -108,6 +118,26 @@ export default function Home() {
         </div>
      </header>
 
+     {/* table section */}
+
+     <main className="container mx-auto md:px-12 px-4 py-6">
+        <TableHeader
+          // filterConfig={filterConfig}
+          // onTabChange={setTab}
+          // onTimeFilterChange={setTimeFilter}
+          // onSearchChange={setSearch}
+        />
+        
+        <TokenTable
+          //  data={sortedData}
+          // loading={loading}
+          // error={error}
+          // sortConfig={sortConfig}
+          // priceUpdates={priceUpdates}
+          // onSort={handleSort}
+          // onRetry={refetch}
+        />
+      </main>
 
   </div>
    )

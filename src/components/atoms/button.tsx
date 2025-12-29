@@ -6,7 +6,7 @@ function PrimaryButton({classes,title}:any) {
     <>
       <Button className={`bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-2xl ${classes}`}>
               {title}
-        </Button>
+      </Button>
     </>
   )
 }
