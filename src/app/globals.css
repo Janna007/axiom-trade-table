@@ -1,26 +1,44 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* define the real color under the correct namespace */
+/* @theme {
+  --color-brand:#3ab7bf;
+  --color-purple: #3f3cbb;
+} */
 
+
+:root {
+  --background: hsl(0 0% 3.9%); 
+  --foreground: hsl(0 0% 98%);
+  --border: hsl(220 15% 18%);
+  --muted: hsl(220 15% 18%);
+  --muted-foreground: hsl(215 15% 55%);
+  --secondary: hsl(142 70% 45%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --primary: hsl(229 100% 66%);
+  --primary-foreground: hsl(0 0% 3.9%); 
+}
+ 
+.dark {
+  --background: hsl(0 0% 98%);
+  --foreground: hsl(0 0% 3.9%); 
+}
+ 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
