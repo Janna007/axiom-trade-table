@@ -91,7 +91,7 @@ export default function Home() {
               Deposit
             </Button> */}
 
-            <PrimaryButton classes="font-semibold rounded-2xl" title="Deposit" />
+            <PrimaryButton className="font-semibold rounded-2xl" title="Deposit" />
             
             <Button variant="ghost" size="icon" className="h-9 w-9 bg-muted rounded-2xl">
               <Star className="h-4 w-4" />

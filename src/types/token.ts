@@ -1,4 +1,6 @@
 
+
+export type Chain = "SOL" | "ETH" | "BSC";
 export interface Token {
     id: string;
     symbol: string;
@@ -7,7 +9,7 @@ export interface Token {
     age: string;
     ageMs: number;
     verified: boolean;
-    chain: 'SOL' | 'ETH' | 'BSC';
+    chain: Chain;
     contractAddress: string;
   }
   

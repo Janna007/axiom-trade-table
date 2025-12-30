@@ -18,6 +18,22 @@
   --secondary-foreground: hsl(0 0% 100%);
   --primary: hsl(229 100% 66%);
   --primary-foreground: hsl(0 0% 3.9%); 
+
+    /* Chart colors */
+    --chart-up: 142 70% 45%;
+    --chart-down: 0 70% 50%;
+    --chart-neutral: 220 15% 35%;
+
+       /* Trading specific colors */
+       --success: hsl(142 70% 45%);
+       --success-foreground: hsl(0 0% 100%);
+       --danger: hsl(0 70% 50%);
+       --danger-foreground: hsl(0 0% 100%);
+       --warning: hsl(45 90% 50%);
+       --warning-foreground: hsl(0 0% 0%);
+       --info: hsl(200 80% 55%);
+       --info-foreground: hsl(0 0% 100%);
+   
 }
  
 .dark {
@@ -35,7 +51,15 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-  --color-dropback:var(--dropback)
+  --color-dropback:var(--dropback);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-danger: var(--danger);
+  --color-danger-foreground: var(--danger-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var( --info-foreground);
 }
 
 @layer base {

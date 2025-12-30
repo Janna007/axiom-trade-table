@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -10,7 +10,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { ArrowUpDown, ArrowUp, ArrowDown } from "lucide-react";
-import type { TokenData, SortConfig, SortField } from "@/types/token";
+import type { TokenData, SortConfig, SortField} from "@/types/token";
+import { generateMockTokens } from "@/data/mockTokens";
+import { TokenInfoCell } from "../molecules/TokenInfoCell";
+import { Chart } from "@/components/atoms/Chart";
+import { PriceCell } from "../molecules/PriceCell";
+import { PercentChange } from "../molecules/PercentChange";
+import { TxnsInfo } from "../molecules/TxnsInfo";
+import { TokenHoldersInfo } from "../molecules/TokenHoldersInfo";
+import { HoldersStats } from "../molecules/HoldersStats";
+import { BuyButton } from "../molecules/BuyButton";
 
 // const SortIcon = React.memo(function SortIcon({
 //   field,
@@ -32,6 +41,57 @@ export const TokenTable = React.memo(function TokenTable(
   
 ) {
 
+  const [data,setData]=useState<TokenData[]>([{
+    token: {
+      id: "",
+      symbol: "",
+      name: "",
+      image: "",
+      age:"",
+      ageMs:1,
+      verified:true,
+      chain:"SOL",
+      contractAddress: "",
+    },
+    metrics: {
+      marketCap:1,
+      marketCapChange:1,
+      liquidity: 1,
+      volume: 1,
+      txns: 1,
+      buys: 1,
+      sells:1,
+    },
+    holders: {
+      top10Percent: 1,
+      devPercent: 1,
+      sniperPercent: 1,
+      insiderPercent: 1,
+      holders: 1,
+      lp:1,
+    },
+    status: {
+      bundled: true,
+      paid: true,
+      migrated: true,
+      rugged: true,
+    },
+    chart:[
+      {
+        timestamp: 1,
+        price: 1
+      }
+    ],
+    views:1,
+  }])
+
+  useEffect(()=>{
+    const data=generateMockTokens()
+    setData(data)
+  },[])
+
+
+  console.log(data)
   // const [sortConfig,setSortConfig]=useState({
   //   field:"age",
   //   direction:"asc"
@@ -88,9 +148,9 @@ export const TokenTable = React.memo(function TokenTable(
             <TableHead className="text-right">Action</TableHead>
           </TableRow>
         </TableHeader>
-        {/* <TableBody>
+        <TableBody>
           {data.map((item, index) => {
-            const update = priceUpdates.get(item.token.id);
+            // const update = priceUpdates.get(item.token.id);
             return (
               <TableRow
                 key={item.token.id}
@@ -101,18 +161,18 @@ export const TokenTable = React.memo(function TokenTable(
                   <TokenInfoCell token={item.token} views={item.views} />
                 </TableCell>
                 <TableCell>
-                  <MiniChart data={item.chart} width={80} height={32} />
+                  <Chart data={item.chart} width={80} height={32} />
                 </TableCell>
                 <TableCell>
                   <div
-                    className={cn(
-                      update?.direction === "up"
-                        ? "price-flash-up"
-                        : update?.direction === "down"
-                        ? "price-flash-down"
-                        : "",
-                      "rounded px-1"
-                    )}
+                    // className={cn(
+                    //   update?.direction === "up"
+                    //     ? "price-flash-up"
+                    //     : update?.direction === "down"
+                    //     ? "price-flash-down"
+                    //     : "",
+                    //   "rounded px-1"
+                    // )}
                   >
                     <PriceCell value={item.metrics.marketCap} />
                     <PercentChange
@@ -150,7 +210,7 @@ export const TokenTable = React.memo(function TokenTable(
               </TableRow>
             );
           })}
-        </TableBody> */}
+        </TableBody>
       </Table>
     </div>
   );
